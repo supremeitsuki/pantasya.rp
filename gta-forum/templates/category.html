@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ category.name }}</h2>
+<p>{{ category.description }}</p>
+<p><a href="{{ url_for('create_thread', cat_id=category.id) }}">Create new thread</a></p>
+
+<ul class="thread-list">
+  {% for t in threads %}
+    <li>
+      <a href="{{ url_for('view_thread', thread_id=t.id) }}">{{ t.title }}</a>
+      <small>by {{ t.author.username }}, {{ t.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="pagination">
+  {% if pagination.has_prev %}
+    <a href="{{ url_for('view_category', cat_id=category.id, page=pagination.prev_num) }}">Prev</a>
+  {% endif %}
+  <span>Page {{ pagination.page }} / {{ pagination.pages or 1 }}</span>
+  {% if pagination.has_next %}
+    <a href="{{ url_for('view_category', cat_id=category.id, page=pagination.next_num) }}">Next</a>
+  {% endif %}
+</div>
+{% endblock %}

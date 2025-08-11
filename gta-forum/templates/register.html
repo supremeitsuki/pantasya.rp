@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Register</h2>
+<form method="post">
+  <label>Username</label><input name="username" required>
+  <label>Email</label><input name="email" type="email" required>
+  <label>In-Game Name</label><input name="in_game_name">
+  <label>Password</label><input name="password" type="password" required>
+  <button type="submit">Register</button>
+</form>
+{% endblock %}

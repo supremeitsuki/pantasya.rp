@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ user.username }}'s profile</h2>
+<p>In-game name: {{ user.in_game_name or '—' }}</p>
+<p>Joined: {{ user.join_date.strftime('%Y-%m-%d') }}</p>
+
+<h3>Recent posts</h3>
+<ul>
+  {% for p in posts %}
+    <li><a href="{{ url_for('view_thread', thread_id=p.thread_id) }}">{{ p.thread.title }}</a> • {{ p.created_at.strftime('%Y-%m-%d') }}</li>
+  {% endfor %}
+</ul>
+
+<div class="pagination">
+  {% if pagination.has_prev %}
+    <a href="{{ url_for('profile', username=user.username, page=pagination.prev_num) }}">Prev</a>
+  {% endif %}
+  <span>Page {{ pagination.page }} / {{ pagination.pages or 1 }}</span>
+  {% if pagination.has_next %}
+    <a href="{{ url_for('profile', username=user.username, page=pagination.next_num) }}">Next</a>
+  {% endif %}
+</div>
+{% endblock %}
