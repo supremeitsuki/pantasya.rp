@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Search results for "{{ query }}"</h2>
+<ul>
+  {% for t in results %}
+    <li><a href="{{ url_for('view_thread', thread_id=t.id) }}">{{ t.title }}</a></li>
+  {% else %}
+    <li>No results.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
