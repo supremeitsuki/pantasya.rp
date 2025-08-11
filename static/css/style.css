@@ -1,0 +1,60 @@
+:root{
+  --bg:#0b0b0c;
+  --panel:#121214;
+  --muted:#9aa0a6;
+  --accent:#f2a900; /* orange/gold GTA vibe */
+  --accent-2:#00d2ff;
+  --text:#e6e6e6;
+  --card:#161619;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #070708 0%, #0f0f10 100%);
+  color:var(--text);
+  min-height:100vh;
+}
+
+.container{ max-width:1100px; margin:0 auto; padding:20px; }
+
+.site-header{
+  background:linear-gradient(90deg, rgba(0,0,0,.6), rgba(0,0,0,.2));
+  border-bottom:1px solid #1a1a1a;
+  padding:12px 0;
+}
+.site-header .container{ display:flex; align-items:center; justify-content:space-between; }
+.logo{ font-weight:700; color:var(--accent); text-decoration:none; font-size:1.2rem; }
+nav a{ color:var(--muted); margin-left:12px; text-decoration:none; }
+nav a:hover{ color:var(--text); }
+
+.layout{ display:flex; gap:20px; align-items:flex-start; }
+.content{ flex:1; min-width:0; }
+.sidebar{ width:300px; }
+
+.card{ background:var(--card); padding:12px; border-radius:8px; margin-bottom:12px; border:1px solid #222; }
+.grid{ display:flex; gap:12px; flex-wrap:wrap; }
+.cat-card{ background:var(--panel); padding:12px; border-radius:6px; width:calc(50% - 6px); border:1px solid #232323; }
+
+.thread-list, .cat-list{ list-style:none; padding:0; margin:0; }
+.thread-list li{ padding:10px; border-bottom:1px dashed #1a1a1a; }
+.post{ background:var(--panel); padding:12px; border-radius:6px; margin-bottom:12px; border:1px solid #232323; }
+.post-meta{ font-size:0.9rem; color:var(--muted); margin-bottom:8px; }
+.post-body{ color:var(--text); }
+.post-image{ max-width:320px; display:block; margin-top:8px; border:1px solid #222; }
+
+input, textarea, select { width:100%; padding:8px; background:#0f0f10; color:var(--text); border:1px solid #222; border-radius:4px; margin-bottom:8px; }
+button{ background:var(--accent); color:#000; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; }
+button:hover{ filter:brightness(.95); }
+
+.flash{ padding:8px; margin-bottom:8px; border-radius:6px;}
+.flash.success{ background: rgba(242,169,0,0.12); color:var(--accent); }
+.flash.danger{ background: rgba(255,0,0,0.08); color:#ff7b7b; }
+.flash.info{ background: rgba(0,210,255,0.06); color:var(--accent-2); }
+
+@media (max-width:900px){
+  .layout{ flex-direction:column; }
+  .sidebar{ width:100%; }
+  .cat-card{ width:100%; }
+}
