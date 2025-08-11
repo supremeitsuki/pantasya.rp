@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2>Forum Categories</h2>
-<ul class="cat-list">
-  {% for c in categories %}
-    <li><a href="{{ url_for('view_category', cat_id=c.id) }}">{{ c.name }}</a> — {{ c.description }}</li>
-  {% endfor %}
-</ul>
-{% endblock %}
